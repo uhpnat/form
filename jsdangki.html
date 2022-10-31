@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <!-- Bootstrap CSS -->
+    <style>
+      .invalid  input {
+        border: 1px solid red;
+      }
+      .invalid  span {
+        color: red;
+      }
+    </style>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <div class="container w-50">
+      <div class="panel panel-primary">
+        <div class="panel-heading">
+          <h2 class="text-center">
+            Registation Form - Input User's Detail Information
+          </h2>
+        </div>
+        <form id="form-1" action="">
+          <div class="panel-body">
+            <div class="form-group">
+              <label for="usr">Name:</label>
+              <input
+				name="name-p"
+                placeholder="VD: Tan Phu"
+                type="text"
+                class="form-control"
+                id="usr"
+              />
+              <span class="form-message"></span>
+            </div>
+            <div class="form-group">
+              <label for="email">Email:</label>
+              <input
+				name="email-p"
+				required="true"
+                placeholder="VD: tanphu@gmail.com"
+                type="email"
+                class="form-control"
+                id="email"
+              />
+              <span class="form-message"></span>
+            </div>
+
+            <div class="form-group">
+              <label for="birthday">Birthday:</label>
+              <input
+			  name="ngaySinh"
+                type="date"
+                class="form-control"
+                
+                id="birthday"
+              />
+              <span class="form-message"></span>
+            </div>
+            <div class="form-group">
+              <label for="pwd">Password:</label>
+              <input
+				name="pass-p"
+                placeholder="Nhập mật khẩu"
+                type="password"
+                class="form-control"
+                id="pwd"
+              />
+              <span class="form-message"></span>
+            </div>
+            <div class="form-group">
+              <label for="confirmation_pwd">Confirmation Password:</label>
+              <input
+                placeholder="Nhập lại mật khẩu"
+                type="password"
+                class="form-control"
+                id="confirmation_pwd"
+              />
+              <span class="form-message"></span>
+            </div>
+            <div class="form-group">
+              <label for="address">Address:</label>
+              <input
+                placeholder="Nhập địa chỉ"
+                type="text"
+                class="form-control"
+                id="address"
+              />
+              <span class="form-message"></span>
+            </div>
+            <button class="btn btn-success">Register</button>
+            <button><a href="./dangnhp.html">Đăng ký</a></button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <script src="./validator.js"></script>
+    <script>
+		Validator({
+		onSubmit: function(data) {
+			console.log(data);
+		},
+		formGroupSelector: '.form-group',
+        form: "#form-1",
+        errorSelector: ".form-message",
+        rules: [
+          Validator.isRequired("#usr", "Vui lòng nhập tên đầy đủ"),
+          Validator.isRequired("#email"),
+          Validator.isEmail("#email"),
+          Validator.isRequired("#email"),
+          Validator.isRequired("#pwd"),
+          Validator.minLength("#pwd", 6),
+          Validator.isRequired("#confirmation_pwd"),
+          Validator.isConfirmation(
+            "#confirmation_pwd",
+            function () {
+              return document.querySelector("#form-1 #pwd").value;
+            },
+            "Mật khẩu nhập lại không chính xác"
+          ),
+          Validator.isRequired("#address"),
+        ],
+      });
+    </script>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
